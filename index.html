@@ -3,23 +3,51 @@
 
 <head>
   <meta charset="utf-8">
-  <title>CS208 - Starter Code (UPDATE ME)!</title>
+  <title>Starting Lineup</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <h1>HTML Rocks!!</h1>
-  <ul>
-  <li><a href="/hello">Click here to say hello</a></li>
-  <li><button id="hello-link">Click Me!</button></li>
-  <li><button id="joke-button">Dad Joke!</button></li>
-  <script src="script.js"></script>
-  </ul>
-  <img src="funny.png" alt="Funny Image" width="300" height="200">
-
-  <h2 id="joke-display"></h2>
+  <h1>Starting Lineup</h1>
+  <p>
+    <fieldset>
+      <legend>Status:</legend>
+      <label>
+        <input type="radio" name="status" value="Draft"> Draft
+      </label>
+      <label>
+        <input type="radio" name="status" value="Final"> Final
+      </label>
+    </fieldset>
+  </p>
+   <p>
+    <label for="gameDate">Date:</label>
+    <select name="gameDate" id="gameDate">
+      <option value="March 20">March 20</option>
+      <option value="March 24">March 24</option>
+      <option value="April 2">April 2</option>
+      <option value="April 6">April 6</option>
+      <option value="April 13">April 13</option>
+    </select>
+  </p>
+  <p>
+    <fieldset>
+      <legend>Players:</legend>
+      <label><input type="checkbox" name="players" value="Nikola Jokic"> Nikola Jokic</label><br>
+      <label><input type="checkbox" name="players" value="Jamal Murray"> Jamal Murray</label><br>
+      <label><input type="checkbox" name="players" value="Christian Braun"> Christian Braun</label><br>
+      <label><input type="checkbox" name="players" value="Aaron Gordon"> Aaron Gordon</label><br>
+      <label><input type="checkbox" name="players" value="Cameron Johnson"> Cameron Johnson</label><br>
+    </fieldset>
+  </p>
+  <p>
+    <input type="submit" value="Submit" id="submitBtn">
+  </p>
+</form>
+<p id="output"></p>
 </body>
+<script src="script.js"></script>
 
 </html>

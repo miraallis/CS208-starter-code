@@ -1,56 +1,20 @@
-// This is a simple JavaScript file that adds interactivity to the HTML page
-// It defines a function to show an alert when a link is clicked
-function sayHello() {
-    alert("Hello, world from javascript!");
+document.getElementById("submitBtn").addEventListener("click", lineUp);
+//This function should take the selections made by the user and display them 
+// to both the console and the webpage
+function lineUp(event) {
+    //Final or Draft?
+    let status = document.querySelector('input[name="status"]:checked').value;
+    //Which day?
+    let gameDate = document.getElementById("gameDate").value;
+    //Which players?
+    let checkedPlayers = document.querySelectorAll('input[name="players"]:checked');
+    //turn the values in checkedPlayers into an array
+    let players = [];
+    checkedPlayers.forEach(player => players.push(player.value));
+    // Console Output
+    console.log("Status:", status);
+    console.log("Game Date:", gameDate);
+    console.log("Players:", players);
+    let output = `Status: ${status} | Date: ${gameDate} | Players: ${players.join(", ")}`;
+    document.getElementById("output").innerText = output;
 }
-// This function will be called when the link is clicked
-// It shows an alert with a message
-// Ensure the DOM is fully loaded before attaching the event listener
-document.addEventListener("DOMContentLoaded", function() {
-    const link = document.getElementById("hello-link");
-    if (!link) {
-        console.error("Link with ID 'hello-link' not found.");
-        return;
-    }
-    link.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-        sayHello();
-    });
-});
-
-async function getRandomJoke() {
-    return fetch('https://icanhazdadjoke.com/', {
-        headers: {
-            'Accept': 'text/plain'
-        }
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        return response.text();
-    })
-    .catch(error => {
-        console.error('There was a problem fetching the joke:', error);
-        return "Failed to fetch a joke. Please try again later.";
-    });
-}
-
-document.addEventListener("DOMContentLoaded", function() {
-    const jokeButton = document.getElementById("joke-button");
-    if (!jokeButton) {
-        console.error("Button with ID 'joke-button' not found.");
-        return;
-    }
-    jokeButton.addEventListener("click", async function() {
-
-            const jokeDisplay = document.getElementById("joke-display");
-            if (!jokeDisplay) {
-                console.error("Element with ID 'joke-display' not found.");
-                return;
-            }
-            jokeDisplay.textContent = "Loading joke...";
-            const joke = await getRandomJoke();
-            jokeDisplay.textContent = joke;
-    });
-});
